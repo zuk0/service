@@ -1,0 +1,283 @@
+#tvz-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 300px;
+    max-height:610px;
+    width: 100%;
+    z-index: 101;
+    background: #080808;   /*#4D7386 url('../img/grass.png') 0% 54% no-repeat*/
+    display: block;
+    color: white;
+    font-size: 0.9em;
+}
+
+/*
+#tvz-wrapper:after {
+    content: '.';
+    width:100%;
+    height:90px;
+    position:absolute;
+    top:-89px;
+    left:0;
+    z-index: 102;
+    background: url('../img/grass.png') 0% 0% no-repeat;
+}
+*/
+
+
+#tvz-wrapper.red {
+    display: block;
+    opacity: 0.5;
+    pointer-events: none;
+}
+#tvz-wrapper.green {
+    display: block;
+    opacity: 1;
+    pointer-events: all;
+}
+#tvz-wrapper #tvz-info {
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    left: 0;
+    height: 123px;
+    display:none;
+    width: 100%;
+    background: #29292b;
+}
+#tvz-wrapper #tvz-info .title {
+    float: none;
+    color: white;
+    font-weight: bold;
+    padding: 3px 3px;
+    color: yellowgreen;
+}
+#tvz-wrapper #tvz-info .watcher {
+    border-left: solid 1px #3C3F41;
+    font-size: 13px;
+    padding-left: 5px;
+    position: absolute;
+    top: 3px;
+    left: 70px;
+}
+#tvz-wrapper #tvz-log {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /*border-left: solid 1px #4D7386;*/
+}
+#tvz-wrapper #tvz-log-panel {
+    height: 77px;
+    background: #343535;
+    position: relative;
+}
+#tvz-wrapper #tvz-log-panel .legend {
+    float: left;
+    padding: 3px;
+    margin: 5px 3px 1px 3px;
+    min-width: 60px;
+    text-align: center;
+    opacity: 0.7;
+}
+#tvz-wrapper #tvz-log-panel .legend.off {
+    background: none !important;
+    opacity: 0.5;
+}
+#tvz-wrapper #tvz-log-panel .legend.focused {
+    box-shadow: 0px 0 1px 0px #fff inset;
+    opacity: 1;
+}
+#tvz-wrapper #tvz-log-panel #tvz-log-pager {
+    float: left;
+    margin: 0 10px;
+    font-size: 30px;
+    padding: 2px 0 0 0;
+}
+#tvz-wrapper #tvz-log-pager span {
+    visibility: hidden;
+    padding: 0 3px;
+    opacity: 0.5;
+}
+#tvz-wrapper #tvz-log-pager span.focused {
+    opacity: 1;
+}
+#tvz-wrapper #tvz-log-filters {
+    position: absolute;
+    top: 5px;
+    left: 70px;
+    width: 400px;
+    height:60px;
+    overflow: hidden;
+    line-height:60px;
+}
+#tvz-wrapper #tvz-log-controller {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    /*background: #2c2f2c;*/
+    text-align: center;
+    line-height: 30px;
+}
+#tvz-wrapper #tvz-log-controller.focused {
+    background: greenyellow;
+    color: black;
+    text-shadow: 5px 2px 5px rgba(0, 0, 1, 0.6);
+    -webkit-text-shadow: 5px 2px 5px rgba(0, 0, 1, 0.6);
+}
+#tvz-wrapper #tvz-log-content {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    max-height: 537px; /* 440*/
+    opacity: 1;
+}
+#tvz-wrapper .line {
+    position: relative;
+    max-height: 535px;
+    overflow: hidden;
+    background: black;
+    color: white;
+    margin-bottom: 1px;
+    line-height: 22px;
+    padding: 2px 3px 2px 26px;
+}
+#tvz-wrapper #line0:after {
+    content: 'initialized';
+    display: block;
+    position: absolute;
+    text-align: right;
+    top: 0;
+    right: 0;
+    font-size: 13px;
+    height: 13px;
+    line-height: 13px;
+    background: yellowgreen;
+    color: black;
+    padding: 3px 5px;
+    min-width: 60px;
+}
+#tvz-wrapper .line label {
+    display: block;
+    position: absolute;
+    text-align: right;
+    top: 0;
+    right: 0;
+    font-size: 13px;
+    height: 13px;
+    line-height: 13px;
+    background: yellowgreen;
+    padding: 3px 5px;
+    min-width: 60px;
+}
+#tvz-wrapper .line i {
+    box-shadow: 1px 0px 14px 0px rgba(50, 50, 50, 0.75);
+    display: block;
+    padding: 2px 4px 2px 2px;
+    min-width: 12px;
+    height: 22px;
+    text-align: right;
+    font-style: normal;
+    background: #29292b;
+    color: #6DA3BD;
+    font-size: 10px;
+    line-height: 22px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#tvz-wrapper .line b {
+    color: yellowgreen;
+    font-weight: normal;
+}
+#tvz-wrapper .line div {
+    line-height: 26px;
+    min-height: 26px;
+}
+#tvz-wrapper label.init {
+    background: greenyellow;
+    color: black;
+}
+#tvz-wrapper label.error {
+    background: red;
+    color: white;
+}
+#tvz-wrapper .line-resp {
+    max-height: 22px;
+}
+#tvz-wrapper .line-vip {
+    background: white !important;
+    color: black !important;
+}
+
+#tvz-wrapper .redmine {
+    background: url('../img/redmine.png') no-repeat !important;
+}
+#tvz-wrapper .array,
+#tvz-wrapper .line-array {
+    background: #daa548 !important;
+}
+#tvz-wrapper .array i,
+#tvz-wrapper .object i {
+    min-width: 13px;
+    box-shadow: 1px 0px 5px 2px rgba(50, 50, 50, 0.75);
+}
+#tvz-wrapper .object,
+#tvz-wrapper .line-object {
+    background: #423c3a !important;
+}
+#tvz-wrapper .apl {
+    background: #425dc1 !important;
+    color: white;
+}
+
+#tvz-wrapper .event {
+    background: #599cbd !important;
+    color: white;
+}
+#tvz-wrapper .key {
+    background: #23272a !important;
+}
+#tvz-wrapper .pla {
+    background: #2F98FF !important;
+    color: white;
+}
+#tvz-wrapper .api {
+    background: #8c062a !important;
+}
+#tvz-wrapper .resp {
+    background: #479205 !important;
+}
+
+/* TEST MODE */
+#tvz-wrapper label.test {
+    background: greenyellow;
+    color: white;
+}
+
+#tvz-wrapper .test {
+    background: black !important;
+    color: white;
+}
+
+#tvz-wrapper label.page {
+    background: grey;
+    color: white;
+}
+
+#tvz-wrapper .page {
+    background: black !important;
+    color: white;
+}
+
+#tvz-wrapper label.focus {
+    background: darkred;
+    color: white;
+}
+
+#tvz-wrapper .focus {
+    background: black !important;
+    color: white;
+}

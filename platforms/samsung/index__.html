@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Redirect Samsung</title>
+    <script type="text/javascript" language="javascript" src="$MANAGER_WIDGET/Common/API/Widget.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+        }
+        #info {
+            background: black; color: white; padding: 5px; border: solid 1px yellowgreen;
+        }
+        #welcome {
+
+        }
+    </style>
+</head>
+<body onload="_redirect();">
+<div id='welcome'>...</div>
+<script>
+
+    var widgetAPI = new Common.API.Widget(); // Create Common module
+    var redirectPATH = 'http://192.168.2.49/state/';
+    var _info; _redirect;
+
+
+    _redirect = function(){
+        widgetAPI.sendReadyEvent(); // Send ready message to Application Manager
+        setTimeout(function(){
+            _info = document.createElement('DIV');
+            _info.id = 'redirect';
+            _info.innerHTML = 'Any key redirect to: ' + redirectPATH + ' ...';
+            document.body.appendChild(_info);
+            var w = document.getElementById('welcome');
+            w.innerHTML = navigator.userAgent;
+            document.addEventListener('keydown',function(e){
+                e.preventDefault();
+                _info.innerHTML += ' in 3 sec';
+                setTimeout(function(){
+                    window.location = redirectPATH;
+                },3000);
+            });
+
+        }, 1000);
+    };
+
+</script>
+</body>
+</html>

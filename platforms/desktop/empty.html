@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {margin:0; padding: 0; background: black; color: white;}
+        div.viewport {position: absolute; top:0; left:0; width:1280px; height:720px; font-size: 20px; text-align: center;}
+        button {font-size:20px; position:absolute; width:100px; height:100px; top:310px; left: 590px; outline: none; border: none;}
+        button:focus {background-color: greenyellow; }
+    </style>
+</head>
+<body>
+
+<div class="viewport">
+
+    <h1>&mdash;test page&mdash;</h1>
+
+    <button id="focus"></button>
+
+</div>
+
+<script>
+    window.onload = function(){
+        var button = document.getElementById('focus');
+        var focus = function(message, state){
+            button.innerHTML = message;
+            button[state? 'focus' : 'blur']();
+        };
+        var exit = function(){
+            window.parent && window.parent.focus();
+        };
+
+        document.addEventListener('keydown', function(e){
+            e.preventDefault();
+            focus(e.key, false);
+            exit();
+        }, false);
+
+        //focus('@focus!', true);
+    };
+</script>
+
+</body>
+</html>

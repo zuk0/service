@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rsp stat="ok">
+    <list>
+	<widget id="redirect">
+            <title>redirect</title>
+            <compression size="2974218" type="zip" />
+            <download>http://192.168.2.49/tvz/samsung.zip</download>
+        </widget>
+    </list>
+</rsp> 

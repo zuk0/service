@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Hello World!!</title>
+    <link rel='stylesheet' type='text/css' href = 'CSS/Main.css'/>
+    <script type="text/javascript" language="javascript" src="$MANAGER_WIDGET/Common/API/Widget.js"></script>
+    <!--<script type="text/javascript" language="javascript" src="JavaScript/Main.js"></script>-->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+        }
+        #welcome {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            width: 500px;
+            height: 50px;
+            background-color: #AFAFAF;
+            color: #99FFFF;
+            font-size: 30px;
+            text-align: center;
+        }
+        #redirect {
+            background: black; color: white; padding: 5px; border: solid 1px yellowgreen;
+        }
+    </style>
+</head>
+<body onload="redirect();">
+<div id='welcome'>Hello world!</div>
+<script>
+
+    var widgetAPI = new Common.API.Widget(); // Create Common module
+    var redirectPATH = 'http://192.168.2.49/state/';
+    var redirect = function(){
+        widgetAPI.sendReadyEvent(); // Send ready message to Application Manager
+        var r = document.createElement('DIV');
+        r.id = 'redirect';
+        r.innerHTML = 'redirect to: '+ redirectPATH +'...';
+        document.body.appendChild(r);
+        /*
+        setTimeout(function(){
+            window.location = 'http://192.168.2.49/state/';
+        }, 3000)
+        */
+        document.addEventListener('keydown',function(e){
+            e.preventDefault();
+            r.innerHTML += (' in 3 sec' + (navigator.userAgent));
+            setTimeout(function(){
+                window.location = redirectPATH;
+            },3000);
+        },false);
+    }
+</script>
+</body>
+</html>

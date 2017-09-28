@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,html {width:1280px; height:720px;}
+        .player {
+            margin: 0 auto;
+            width: 885px;
+            height: 452px;
+            background: #000000;
+            position: relative;
+            top: 5px;
+            z-index: 100;
+            /* overflow: hidden; */
+        }
+
+        .player.fullscreen {
+            margin: 0;
+            width: 1280px;
+            height: 720px;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .player-video {
+            width: 885px;
+            height: 452px;
+            background: #000000;
+            position: absolute;
+            top: 0;
+            transform-origin: 50%;
+            right: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        .player.fullscreen .player-video {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .zoom {zoom:1}
+        .zoom2 {zoom:2}
+
+    </style>
+    <script src="http://192.168.2.49:8080/target/target-script-min.js#anonymous"></script>
+    <script>
+        window._reload = function(parent){
+            if(parent){
+                window.parent && window.parent.location.reload();
+            } else {
+                window.location.reload();
+            }
+        };
+        window._video = function(_class,_style){
+            var _el = document.getElementsByTagName('video')[0];
+            if(_class){
+                var act = _el.classList.contains(_class)? 'remove' : 'add';
+                _el.classList[act](_class);
+            }
+            if(_style){
+                _el.style[_style[0]] = _style[1];
+            }
+            console.log('VIDEO style change',_class,_style);
+            return _el;
+        };
+    </script>
+</head>
+<body>
+<div class="player fullscreen">
+    <!-- ko if: player.playerType === 'std' -->
+    <video class="player-video" autoplay>
+        <source type="video/mp4" src="http://195.16.112.71/stream/tvzavr/3/3835f7b3-2c99-4efd-921a-4f597870e94a/v.hd.und.mp4?usessionid=xbHlbDh0n0UQyga_f3fahxZpfmZs6WbeDTHmNS_Ts60%3D&pageurl=null&token=4c457b07f363787b16aab52d651f3ae0ea9f705a9170bd02e855f578300123e29c9648a360b3b776827e7aa37fcf276b&platform=tzf" />
+    </video>
+
+</div>
+
+</body>
+</html>

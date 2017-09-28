@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirect App ON Navigation STATE</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/logger.css">
+    <!-- platform checkIn -->
+    <script src="platforms/index.js"></script>
+    <!-- libs -->
+    <script src="lib/helpers.js"></script>
+    <script src="lib/state.js"></script>
+    <!-- resources -->
+    <script src="res/resource_config.js"></script>
+    <script src="res/test_config.js"></script>
+    <!-- js -->
+    <script src="js/logger.js"></script>
+    <script src="js/app.js"></script>
+
+
+    <!--<script src="http://192.168.2.49:8080/target/target-script-min.js#root"></script>-->
+    <script>
+        (function(device, location, smarthub, desktop, files){
+            var __tvzLS, __path;
+            __tvzLS = location.host.split('192.168.')[1];
+            __path = 'res/';  //'http://staging3.tvzavr.ru/html/redirect/';
+            if(files && files.length){
+                console.warn("reload files to prevent caching...[" + __path + (files.join(',')) + ']', device);
+                files.forEach(function(url,n){ // __weinre,
+                    var _script = document.createElement('script');
+                    _script.src = __path + url + '?ts=' + new Date().getTime();
+                    _script.type = 'text/javascript';
+                    document.head.appendChild(_script);
+                });
+            }
+            console.warn('env:',__tvzENV);
+            //window.__tvzENV = ~(device.indexOf(smarthub))? 'samsung' : ~(device.indexOf(desktop))? 'desktop' : null;
+        })(navigator.userAgent, location, 'SmartHub', 'Chrome/60', ['resource_config.js']);
+    </script>
+</head>
+<body>
+
+<div id="viewport" class="idle focused">
+    <nav class="app" data-initial="paths">
+
+        <nav class="header"
+             data-dirs="DOWN" data-forced="paths"
+        >
+            <div id="app-top">
+                <h1><button id="header_RED" class="red" data-action="red">RED</button>IRECT APP: [<span id="js-mode">loading</span>] ... <span id="js-path"></span></h1>
+            </div>
+        </nav>
+
+        <nav class="main" data-dirs="UP:DOWN">
+            <div id="app-left">
+                <nav class="lists" data-dirs="RIGHT">
+
+                    <nav class="listin" data-dirs="DOWN">
+
+                        <nav class="paths"
+                             data-navs="UP:DOWN"
+                             data-dirs="RIGHT"
+                        >
+                            <h2>path: <span name="paths"></span></h2>
+                            <div class="cont">
+                                <div class="scrollable paths" id="redirect_paths">
+
+                                </div>
+                                <button id="params-nav-UP" class="arrow up nav-UP">&#8679;</button>
+                                <button id="params-nav-DOWN" class="arrow down nav-DOWN">&#8681;</button>
+                            </div>
+                        </nav>
+
+                        <nav class="selector" data-dirs="LEFT">
+
+                            <nav class="cats"
+                                 data-navs="LEFT:RIGHT"
+                                 data-dirs="DOWN"
+                            >
+                                <h2>with: <span name="cats"></span></h2>
+                                <div class="cont-cats">
+                                    <div class="scrollable cats" id="redirect_cats">
+
+                                    </div>
+                                </div>
+                            </nav>
+
+                            <nav class="params"
+                                 data-navs="UP:DOWN"
+                                 data-dirs="UP"
+                            >
+
+                                <div class="cont" id="js-select">
+                                    <div class="scrollable select params" id="redirect_params">
+
+                                    </div>
+                                    <div class="scrollable select user" id="redirect_user">
+
+                                    </div>
+                                    <div class="scrollable select iso" id="redirect_iso">
+
+                                    </div>
+                                    <div class="scrollable select post" id="redirect_post">
+
+                                    </div>
+                                </div>
+                            </nav>
+                        </nav>
+
+
+
+                    </nav>
+
+
+                    <nav class="_logger" id="tvz" data-dirs="UP">
+
+                        <div id="tvz-wrapper">
+                            <div id="tvz-info">
+                                <div class="title">app info:</div>
+                            </div>
+                            <div id="tvz-log">
+                                <div id="tvz-log-content"></div>
+                                <div id="tvz-log-panel" class="tvz-log-panel">
+                                    <nav class="log_control" data-dirs="LEFT">
+                                        <button id="tvz-log-controller" class="tvz-log-controller log">@</button>
+                                        <div id="tvz-log-pager"></div>
+                                    </nav>
+                                    <nav class="log_filters" data-dirs="RIGHT" data-navs="LEFT:RIGHT">
+                                        <div id="tvz-log-filters" class="filters tvz-log-filters">
+
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+
+                    </nav>
+
+
+                </nav>
+            </div>
+
+            <nav class="actions" id="js-panel"
+                 data-navs="UP:DOWN"
+                 data-dirs="LEFT:RIGHT"
+                 data-loop="navs"
+            >
+                <div class="actions">
+                    <button name="half" class="button actions redirect" data-action="load">1/2</button>
+                    <button name="full" class="button actions edit" data-action="load">1:1</button>
+                    <button name="go" class="button actions edit" data-action="load">GO</button>
+                </div>
+            </nav>
+
+            <!-- RIGHT (frame app) side -->
+
+            <div id="app-right">
+
+                <nav class="sidepanel" data-dirs="LEFT">
+                    <!-- application frame -->
+
+
+                    <nav class="tests" data-navs="UP:DOWN" data-dirs="DOWN" id="tests">
+                        <h2>tests: <span name="tests"></span></h2>
+                        <div class="cont">
+                            <div class="scrollable tests" id="redirect_tests">
+
+                            </div>
+                        </div>
+                    </nav>
+
+                    <nav class="frame" data-dirs="UP">
+                        <div class="frame_wrapper" id="js-frame" tabindex="10000"></div>
+                    </nav>
+
+
+
+                </nav>
+
+            </div>
+
+
+
+        </nav>
+        <!-- /MAIN -->
+
+        <div id="app-bottom" class="navs footer">
+            <nav class="footer"
+                 data-navs="LEFT:RIGHT"
+                 data-dirs="UP"
+            >
+                <div id="footer_BLUE" tabIndex="100" class="button blue" data-action="clear">&mdash; Clear</div>
+                <div id="footer_GREEN" tabIndex="101" class="button green" data-action="reload">&mdash; Reload</div>
+            </nav>
+            <div class="version">@v. 1.4.0</div>
+        </div>
+
+
+    </nav>
+
+</div>
+
+
+<script>
+    var _tvzPATH, _tvzDEV, _tvz, _service, _samsung;
+
+    _tvz = {
+        service: {}
+    };
+
+    window.addEventListener('error', function (e) {
+        var stack = e.error.stack;
+        var message = e.error.toString();
+        if (stack) {
+            message += '\n' + stack;
+        }
+        console.error(message,e);
+    },false);
+
+    _tvzPATH = ['//',window.location.host,window.location.pathname,'index.js?ts=',new Date().getTime()].join('');
+
+
+    window.onload = function() {
+        console.log("@root [window onload] -> init...", __tvzENV);
+
+        _LOGGER.create({}, _byId('tvz-wrapper')? null : _byId('tvz'));
+        _LOGGER.attach(_tvz.service,'console',{path: '_tvz.service'});
+        app
+                .build(redirect_config, 'redirect_')
+                .init(_STATE.init(app.config, _byId('viewport')));
+
+    };
+
+</script>
+</body>
+</html>

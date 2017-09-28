@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget>
+    <content src="index.html"/>
+    <icon src="img/app-icons/app-icon-500.png"/>
+    <name>TVzavr</name>
+    <runTitle>TVzavr</runTitle>
+    <widgetname itemtype="string">кинотеатр tvzavr</widgetname>
+    <description itemtype="string">TVzavr Online Theater</description>
+    <ver itemtype="string">3.12.7</ver>
+    <apptype itemtype="number">11</apptype>
+    <category itemtype="string">video</category>
+    <autoUpdate itemtype="boolean">y</autoUpdate>
+
+    <ThumbIcon itemtype="string">./img/app-icons/app-icon-106.png</ThumbIcon>
+    <BigThumbIcon itemtype="string">./img/app-icons/app-icon-115.png</BigThumbIcon>
+    <ListIcon itemtype="string">./img/app-icons/app-icon-85.png</ListIcon>
+    <BigListIcon itemtype="string">./img/app-icons/app-icon-95.png</BigListIcon>
+    <ThumbIconHD itemtype="string">./img/app-icons/app-icon-212.png</ThumbIconHD>
+    <BigThumbIconHD itemtype="string">./img/app-icons/app-icon-230.png</BigThumbIconHD>
+    <ListIconHD itemtype="string">./img/app-icons/app-icon-170.png</ListIconHD>
+    <BigListIconHD itemtype="string">./img/app-icons/app-icon-190.png</BigListIconHD>
+
+    <author itemtype="group">
+        <name itemtype="string">TVzavr</name>
+        <email itemtype="string">contacts@tvzavr.ru</email>
+        <link itemtype="string">http://www.tvzavr.ru</link>
+        <organization itemtype="string">LLC, TVzavr</organization>
+    </author>
+
+    <fullwidget itemtype="boolean">y</fullwidget>
+    <videomute itemtype="boolean">n</videomute>
+    <audiomute itemtype="boolean">n</audiomute>
+    <childlock itemtype="boolean">n</childlock>
+    <srcctl itemtype="boolean">y</srcctl>
+    <movie itemtype="boolean">y</movie>
+    <dcont itemtype="boolean">y</dcont>
+    <width itemtype="number">1280</width>
+    <height itemtype="number">720</height>
+    <mouse>y</mouse>
+</widget>

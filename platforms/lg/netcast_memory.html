@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+<style>
+    body, html {background-color:black; color: white; margin:0; padding:0;}
+    .wrap {position:absolute; top:50%; left:50%; width:600px; height: 300px; margin:-109px 0 0 -300px; border: solid 1px transparent; text-align: center;}
+    .img_cont { float:left; width:145px; height: 218px; text-align: center; line-height: 218px; background: black; color:white;}
+    .img_cont > div {border: solid 1px transparent; font-size: smaller; white-space: nowrap; height:100px !important;}
+
+
+    #start {position:absolute; top:30%; left:30%; width:600px; color: yellowgreen; text-align:left;}
+    #viewport { background-color: rgba(0, 0, 0, 0.6);  width:1280px; height:720px; position:relative; color: white; }
+    .cover {background-size: cover;}
+</style>
+
+</head>
+<body class="cover">
+
+<!--
+<div id="result" style=" position:absolute; top:0; left:0; width:200px; height: 218px; border: solid 1px red; text-align: center; line-height: 100px; background: black; color: white;">
+
+</div>
+-->
+
+<div id="viewport">
+    <div id="start">Start with memory: </div>
+    <div class="wrap">
+        <div class="img_cont" id="img0">
+
+        </div>
+        <div class="img_cont" id="img1">
+
+        </div>
+        <div class="img_cont" id="img2">
+
+        </div>
+        <div class="img_cont" id="img3">
+
+        </div>
+    </div>
+</div>
+<script>
+
+
+    var counter = 28412;
+    var cont = 0;
+    var max = 4;
+    var vp, bd;
+
+    var addImage = function(memory){
+        var img = '<img width="145" height="218" src="';
+        var path = 'http://www.tvzavr.ru/common/tvzstatic/cache/145x218/';
+
+        path = path + (counter--) + '.jpg"';
+        var target = document.getElementById("img"+(cont++));
+        target.innerHTML = img + path +  '/>' + ('<div>' + memory + '</div>');
+        //var vp = document.getElementById('viewport');
+        bd.style.backgroundImage = 'url("'+path+')';
+        //console.log('url("'+path+')');
+        window.parent._tvz.service.console.log(img + path +  '/>' + '<b>'+path+'</b>');
+
+    };
+
+
+    window.onload = function(){
+        var start = document.getElementById("start");
+        vp = document.getElementById("viewport");
+        bd = document.getElementsByTagName('body')[0];
+        start.innerHTML += counter + ': ' + (window.NetCastGetUsedMemorySize? window.NetCastGetUsedMemorySize()  / 1048576 : '...' )+ 'MB';
+
+        var reload = function(){
+            document.location.reload(true);
+        };
+
+        setInterval(function(){
+            //document.location.reload(true);
+            var memory = counter + ': ' + (window.NetCastGetUsedMemorySize? window.NetCastGetUsedMemorySize()  / 1048576 : '...' )+ 'MB';
+            cont = cont == max? 0 : cont;
+            addImage(memory);
+        },500);
+
+        document.addEventListener('keydown', function (e) {
+            e.preventDefault();
+            document.location.reload(true);
+        });
+
+    }
+
+</script>
+</body>
+</html>
