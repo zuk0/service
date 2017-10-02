@@ -132,6 +132,10 @@ app = {
             var id = el.id.slice(cat.length);
             last.classList.remove('active');
             el.classList[remove || 'add']('active');
+            //temp = index <= 1? [context.path[index],context.data[cat][id]] : [context.jobs[cat],app_data[cat][id]];
+            //temp[0] = remove? null : temp[1];
+            //var target = index <= 1? context.path[index] : context.jobs[cat];
+            //target = remove? null : context.data[cat][id];
             if(index <= 1){
                 context.path[index] = remove? null : context.data[cat][id];
             } else {
@@ -214,30 +218,20 @@ app = {
      *  Loads app to frame
      *  @param {String} - type. Sets view mode for opened app
     */
-    _onWindowFocusChange: function(){
-        this.console.log('root','@window BLUR listener...');
-    },
     updateAppFrame: function(mode, reload){
-        this.console.log("root","@load ["+mode+"] frame. PATH:" + this.path);
+        console.log("@load ["+mode+"] frame. PATH:", this.path, 'JOBS:', this.tasks);
         this.frame.url = this.path.join('');
-        var frame = _byId(this.frame.id);
-        var doc = frame.contentWindow.document;
-        if(doc.readyState == 'complete'){
-            this.console.log('root', '@app['+frame.id+'] loaded...');
-            this.ui.update('mode','loaded', true);
-            //return frame.contentWindow.focus();
-        }
-        frame.src = this.frame.url;
+        _byId(this.frame.id).src = this.frame.url;
 
     },
-    _createAppFrame: function(){
+    createAppFrame: function(){
         var data = this.frame, el;
         el = document.createElement('iframe');
         el.id = data.id; el.name = data.name || data.id;
         el.className = data.css + data.scale;
         this.ui[data.place].appendChild(el);
         data.ready = true;
-        this.console.log("@app frame created at "+ data.place);
+        console.log("@app frame created", this.ui[data.place].firstElementChild);
     },
     deleteAppFrame: function(){
         this.ui[this.frame.place].removeChild(_byId(this.frame.id));
@@ -250,7 +244,7 @@ app = {
     */
     enter: function(state, target){
         //console.warn("APP ROUTER ON ENTER:", this.state.current().id, this);
-        this.console.warn("router on enter ["+state.id+"] target: " + target.id || target.className);
+        console.warn("APP ROUTER ON ENTER ["+state.id+"]", state, target);
         switch(state.id){
             case 'paths': case 'params':
                 return this.select(state);
@@ -259,20 +253,19 @@ app = {
                 var action = target.getAttribute('data-action');
                 var type = target.name;
                 if(!this.frame.ready){
-                    this._createAppFrame();
-                    window.addEventListener('blur',this._onWindowFocusChange.bind(this),false)
+                    this.createAppFrame();
                 }
                 this.ui.update('mode','loading', true);
                 this.updateAppFrame(type);
             break;
-            case 'frame':
-                this.console.log('root','...request to focus frame...');
+            case '_app':
+                console.log("@APP ENTER ON "+state.id);
                 var frame = _byId('new_app');
                 var doc = frame.contentWindow;
                 return doc && doc.focus();
             break;
             default:
-                this.console.log('root', 'unhandled ENTER on '+ state.id);
+                console.log("@ROOT ENTER ON "+state.id);
                 state.target && state.target.click && state.target.click();
         }
     },

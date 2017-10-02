@@ -6,7 +6,7 @@
     <style>
         body {margin:0; padding: 0; background: black; color: white;}
         div.viewport {position: absolute; top:0; left:0; width:1280px; height:720px; font-size: 20px; text-align: center;}
-        button {font-size:20px; position:absolute; width:100px; height:100px; top:310px; left: 590px; outline: none; border: none;}
+        button {font-size:20px; position:absolute; width:100px; height:100px; top:450px; left: 590px; outline: none; border: none;}
         button:focus {background-color: greenyellow; }
     </style>
 </head>
@@ -14,23 +14,43 @@
 
 <div class="viewport">
 
-    <h1>&mdash;test page&mdash;</h1>
+    <h1>&mdash;test page[focus]&mdash;</h1>
+    <img src="loader2.gif"/>
 
-    <button id="focus"></button>
+    <button id="focus">...loaded...</button>
 
 </div>
 
 <script>
+
+    var _service;
+    var _appName = function(event){
+        return event? '@page[focus] -> ['+ event +']' : '@page[focus]: ';
+    };
+    var _onfocus = function(){
+        _service.log('apl', _appName('onfocus'));
+    };
+
+    var _onblur = function(){
+        _service.log('apl', _appName('onblur'));
+    };
+
     window.onload = function(){
 
-        parent && parent._tvz.service.console.log('@test page onload ', location);
+        _service = (parent && parent._tvz)? parent._tvz.console : window.console;
+        _service.log('apl', _appName('onload'), location);
+
+        window.onfocus = _onfocus;
+        window.onblur = _onblur;
 
         var button = document.getElementById('focus');
         var focus = function(message, state){
             button.innerHTML = message;
             button[state? 'focus' : 'blur']();
         };
+
         var exit = function(){
+            _service.log('apl', _appName('EXIT'));
             window.parent && window.parent.focus();
         };
 

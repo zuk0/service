@@ -58,11 +58,11 @@
 
                     <nav class="listin" data-dirs="DOWN">
 
-                        <nav class="paths left-side-list"
+                        <nav class="paths"
                              data-navs="UP:DOWN"
                              data-dirs="RIGHT"
                         >
-                            <label>path: <span name="paths"></span></label>
+                            <h2>path: <span name="paths"></span></h2>
                             <div class="cont">
                                 <div class="scrollable paths" id="redirect_paths">
 
@@ -72,20 +72,18 @@
                             </div>
                         </nav>
 
-                        <nav class="selector left-side-list" data-dirs="LEFT">
+                        <nav class="selector" data-dirs="LEFT">
 
                             <nav class="cats"
                                  data-navs="LEFT:RIGHT"
                                  data-dirs="DOWN"
                             >
-                                <label>with: <span name="cats"></span></label>
-
-                                <div class="hidden-cats">
+                                <h2>with: <span name="cats"></span></h2>
+                                <div class="cont-cats">
                                     <div class="scrollable cats" id="redirect_cats">
 
                                     </div>
                                 </div>
-
                             </nav>
 
                             <nav class="params"
@@ -126,12 +124,9 @@
                                 <div id="tvz-log-panel" class="tvz-log-panel">
                                     <nav class="log_control" data-dirs="LEFT">
                                         <button id="tvz-log-controller" class="tvz-log-controller log">
-                                            @
+                                            <img width="30" src="img/loader2.gif" />
                                         </button>
-                                        <div id="tvz-log-pager">
-                                            <span name="-1" id="page-1"></span>
-                                            <span name="1" id="page1"></span>
-                                        </div>
+                                        <div id="tvz-log-pager"></div>
                                     </nav>
                                     <nav class="log_filters" data-dirs="RIGHT" data-navs="LEFT:RIGHT">
                                         <div id="tvz-log-filters" class="filters tvz-log-filters">
@@ -163,8 +158,8 @@
             <!-- RIGHT (frame app) side -->
 
             <div id="app-right">
-                <img width="40" src="img/loader.gif" class="app-loader" />
-                <nav class="sidepanel" id="js-app-panel" data-dirs="LEFT">
+
+                <nav class="sidepanel" data-dirs="LEFT">
                     <!-- application frame -->
 
 
@@ -179,7 +174,8 @@
 
                     <nav class="frame" data-dirs="UP">
                         <div class="frame_wrapper" id="js-frame" tabindex="10000">
-
+                            <!--<img width="100" src="img/loader.gif" />-->
+                            <img src="img/loader2.gif" />
                         </div>
                     </nav>
 
@@ -210,7 +206,7 @@
 
 </div>
 
-<!--<div id="dance" style="position:absolute; top: 300px; left:0px; z-index:5000;"><img width="240" src="img/dance.gif" /></div>-->
+<div id="dance" style="position:absolute; top: 300px; left:0px; z-index:5000;"><img width="240" src="img/dance.gif" /></div>
 
 <script>
     var _tvzPATH, _tvzDEV, _tvz, _service, _samsung;
@@ -243,7 +239,7 @@
         });
 
         // initialize root APP
-        app.console = _tvz.console;
+
         app
                 .build(redirect_config, 'redirect_')
                 .init(_STATE.init(app.config, _byId('viewport')));

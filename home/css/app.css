@@ -1,4 +1,7 @@
-
+.scale {
+    /* the same as transform: scaleX(2) scaleY(2);*/
+    transform: scale(0.50);
+}
 body,html {margin:0; padding:0; width:100%; height:100%; background:black; color: white;}
 #viewport {width:1280px; height:720px; background:url('../img/bg.jpg') 100% 100% no-repeat; overflow: hidden; position:relative;}
 /*#viewport.loaded {background-position: 43% 100%;}   */
@@ -41,29 +44,17 @@ span i {color: skyblue; padding-right:5px;}
 .scrollable.user,
 .scrollable.post,
 .scrollable.tests {height:150px; }
-
 .scrollable button {white-space: nowrap; text-align: left; border:none; border-bottom: solid 1px rgba(91, 123, 91, 0.38); background: rgba(84, 128, 130, 0.23) }
 
-/*
 .scrollable.cats {height:30px; width:70px;}
 .scrollable.cats button {height:30px; width:70px; text-align: center;}
 .cont-cats {width:70px; height:30px; position:absolute; top:0; left:350px;}
-*/
 
 .select {display:none;}
 .select.on {display:block !important;}
 
-
-/* LEFT SIDE PATHS:
-   members: paths, params
-*/
-.left-side-list {border: solid 1px red !important; float:left; width:49%; padding-top:40px; } /*float:left; width:49%;*/
-.left-side-list label {line-height:40px; font-size: 21px; position:absolute; top:0px; left:10px;}
-
-.hidden-cats {width:70px; height:30px; overflow: hidden; position:absolute; top:0px; left:100px;}
-.hidden-cats button {width:70px; height:30px; text-align:center; }
-
-
+#agent {font-size:13px; color:yellow; line-height:13px;}
+#status {color:yellow;}
 
 /*b {background:#839c37; color:white; padding:2px 6px; margin:1px; font-style:normal; text-align: center; border:solid 1px #8bc34a}*/
 b:focus {background:white; color: red;}
@@ -104,20 +95,19 @@ nav.actions button {margin:10px; line-height:40px; height:40px; text-align: cent
 nav.actions button:focus {color:white; background:#d2691e; outline: none; }
 #js-panel {display:none;}
 
-nav.paths {border: solid 1px rgba(91, 123, 91, 0.38); opacity:0.7; margin:3px;}
+nav.paths {border: solid 1px rgba(91, 123, 91, 0.38); margin:0 40px 20px 0; float:left; width:49%; opacity:0.7; margin:3px;}
 nav.tests {border: solid 1px rgba(91, 123, 91, 0.38); margin:0 40px 20px 0; width:100%; opacity:0.7; margin:3px;}
 nav.paths:after {content:"...";}
-nav.paths .scrollable button,
-nav.params .scrollable button,
-nav.tests .scrollable button {width:100%; height:30px; outline:none;}
+nav.paths .scrollable button, nav.params .scrollable button, nav.tests .scrollable button {width:100%; height:30px; outline:none;}
 
 nav.selector {}
 
 nav.params .scrollable div {width:100%; height:30px; outline:none; background:cadetblue; color:white;}
 nav.params div:focus {background: #e63e3e; color:white;}
-nav.cats {opacity:0.7; position:absolute; top:0; left:0;}
+nav.cats {opacity:0.7;}
+nav.cats h2 {margin:12px 0px 0px 0px; padding:0 0 0 0;}
 
-nav.params {border: solid 1px rgba(91, 123, 91, 0.38); border-top:none; opacity:0.7; margin:3px;}
+nav.params {border: solid 1px rgba(91, 123, 91, 0.38); margin-bottom:20px; border-top:none; float:left; width:48%; opacity:0.7; margin:13px 3px 3px 3px;}
 nav.params:after {content:"...";}
 
 nav._logger {height:360px; width:100%; overflow: hidden;}
@@ -145,7 +135,7 @@ nav.posters button.arrow {width:50px; height:50px; background:black; text-align:
 nav.paths button.arrow.up {top:40px; margin-left:-10px; width:30px; height:30px; background:black; text-align:center; line-height:20px; border: solid 2px white; border-radius: 50%;}
 nav.paths button.arrow.down {bottom:-25px; margin-left:-10px; width:30px; height:30px; background:black; text-align:center; line-height:20px; border: solid 2px white; border-radius: 50%;}
 
-nav.sidepanel { position:absolute; width:300px; padding:20px; top:0; right:0; display:none;}  /*border:solid 1px rgba(91, 123, 91, 0.38);*/
+nav.sidepanel { position:absolute; width:300px; padding:20px; top:0; right:0; }  /*border:solid 1px rgba(91, 123, 91, 0.38);*/
 nav.sidepanel:after {content:""; top:-20px;}
 nav.panel {margin-bottom: 50px; border: solid 1px rgba(91, 123, 91, 0.38); padding:10px; opacity:0.7}
 nav.panel:after {content:""; top:-20px;}
@@ -156,10 +146,6 @@ nav.footer {left:-25px; right:20px;}
 nav.footer:after {content:""; font-size:11px; font-style: italic; }
 nav.sidepanel .panel button {margin-right:2px; width:20%;}
 
-.loaded nav.sidepanel {display:block;}
-
-.app-loader {display:none; width:40px; position:absolute; top:55%; left:40%;}
-.loading .app-loader {display:block;}
 
 /* popup */
 #popup {display:none;}
