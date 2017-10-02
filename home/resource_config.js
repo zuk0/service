@@ -4,20 +4,19 @@
  */
 var redirect_config, redirect_data, __local;
 __local = window.location.origin + '/';
-__local = '192.168.0.103/';
 redirect_config = {
     paths: [
-        'http://192.168.0.103/service/widget/idle/',
-        'http://192.168.0.103/service/widget/focus/index.html?' + '&ts=' + new Date().getTime(),
+        __local + 'service/widget/focus/index.html?' + '&ts=' + new Date().getTime(),
         'http://lg-app.megogo.net/#pageMain',
-        __local + 'service/platforms/lg/netcast_memory.html',
+        /*
+        'http://192.168.2.49/state/platforms/lg/netcast_memory.html',
         'http://staging3.tvzavr.ru/html/promo/pnk/',
         __local + 'state/platforms/samsung/video.html?',
         __local + 'tvzavr3.12.7/?',
         __local + 'pnk/?',
         __local + 'tvzavr/?',
         'http://192.168.3.192/',
-
+        */
         'http://services.tvzavr.ru/alliance/?',
         'http://services.tvzavr.ru/tvzavr/webos/?',
         'http://services.tvzavr.ru/tvzavr/netcast/?',

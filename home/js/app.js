@@ -218,11 +218,8 @@ app = {
      *  Loads app to frame
      *  @param {String} - type. Sets view mode for opened app
     */
-    _onWindowFocusChange: function(){
-        this.console.log('root','@window BLUR listener...');
-    },
     updateAppFrame: function(mode, reload){
-        this.console.log("@load ["+mode+"] frame. PATH:", this.path, 'JOBS:', this.tasks);
+        console.log("@load ["+mode+"] frame. PATH:", this.path, 'JOBS:', this.tasks);
         this.frame.url = this.path.join('');
         _byId(this.frame.id).src = this.frame.url;
 
@@ -234,7 +231,7 @@ app = {
         el.className = data.css + data.scale;
         this.ui[data.place].appendChild(el);
         data.ready = true;
-        this.console.log("@app frame created", this.ui[data.place].firstElementChild);
+        console.log("@app frame created", this.ui[data.place].firstElementChild);
     },
     deleteAppFrame: function(){
         this.ui[this.frame.place].removeChild(_byId(this.frame.id));
@@ -247,7 +244,7 @@ app = {
     */
     enter: function(state, target){
         //console.warn("APP ROUTER ON ENTER:", this.state.current().id, this);
-        this.console.warn("APP ROUTER ON ENTER ["+state.id+"]", state, target);
+        console.warn("APP ROUTER ON ENTER ["+state.id+"]", state, target);
         switch(state.id){
             case 'paths': case 'params':
                 return this.select(state);
@@ -257,7 +254,6 @@ app = {
                 var type = target.name;
                 if(!this.frame.ready){
                     this.createAppFrame();
-                    document.addEventListener('blur',this._onWindowFocusChange.bind(this),false)
                 }
                 this.ui.update('mode','loading', true);
                 this.updateAppFrame(type);
@@ -269,7 +265,7 @@ app = {
                 return doc && doc.focus();
             break;
             default:
-                this.console.log("@ROOT ENTER ON "+state.id);
+                console.log("@ROOT ENTER ON "+state.id);
                 state.target && state.target.click && state.target.click();
         }
     },
