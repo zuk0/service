@@ -39,10 +39,7 @@
 #tvz-wrapper #tvz-info {
     position: absolute;
     top: 0;
-    overflow: hidden;
     left: 0;
-    height: 123px;
-    display:none;
     width: 100%;
     background: #29292b;
 }
@@ -112,13 +109,13 @@
     overflow: hidden;
     line-height:60px;
 }
+/*
 #tvz-wrapper #tvz-log-controller {
     position: absolute;
     top: 10px;
     right: 20px;
     width: 40px;
     height: 40px;
-    /*background: #2c2f2c;*/
     text-align: center;
     line-height: 30px;
 }
@@ -128,6 +125,8 @@
     text-shadow: 5px 2px 5px rgba(0, 0, 1, 0.6);
     -webkit-text-shadow: 5px 2px 5px rgba(0, 0, 1, 0.6);
 }
+*/
+
 #tvz-wrapper #tvz-log-content {
     overflow-x: hidden;
     overflow-y: hidden;
@@ -241,12 +240,12 @@
     background: #423c3a !important;
 }
 #tvz-wrapper .apl {
-    background: #425dc1 !important;
+    background: #425dc1;
     color: white;
 }
 
 #tvz-wrapper .root {
-    background: #1f1d1d !important;
+    background: #1f1d1d;
     color: white;
 }
 
@@ -267,6 +266,9 @@
 #tvz-wrapper .resp {
     background: #479205 !important;
 }
+
+label.root {background: #1f1d1d !important;}
+label.apl {background: #425dc1 !important;}
 
 /* TEST MODE */
 #tvz-wrapper label.test {

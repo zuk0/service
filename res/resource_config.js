@@ -4,11 +4,11 @@
  */
 var redirect_config, redirect_data, __local;
 __local = window.location.origin + '/';
-__local = '192.168.0.103/';
+
 redirect_config = {
     paths: [
-        'http://192.168.0.103/service/widget/idle/',
-        'http://192.168.0.103/service/widget/focus/index.html?' + '&ts=' + new Date().getTime(),
+        __local + 'service/widget/idle/index.html',
+        __local + 'service/widget/focus/index.html?' + '&ts=' + new Date().getTime(),
         'http://lg-app.megogo.net/#pageMain',
         __local + 'service/platforms/lg/netcast_memory.html',
         'http://staging3.tvzavr.ru/html/promo/pnk/',

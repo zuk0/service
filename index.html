@@ -119,7 +119,7 @@
 
                         <div id="tvz-wrapper">
                             <div id="tvz-info">
-                                <div class="title">app info:</div>
+                                <lable>device:</lable>
                             </div>
                             <div id="tvz-log">
                                 <div id="tvz-log-content"></div>
@@ -239,7 +239,7 @@
         _LOGGER.create({}, _byId('tvz-wrapper')? null : _byId('tvz'));
         _LOGGER.attach(_tvz,'console',{
             path: '_tvz',
-            test: false //'test legends...'
+            test: 'test legends...'
         });
 
         // initialize root APP
@@ -247,6 +247,12 @@
         app
                 .build(redirect_config, 'redirect_')
                 .init(_STATE.init(app.config, _byId('viewport')));
+
+        /*
+        [1,2,3,4,6,7,8,9,10,11,12,13,14,15].forEach(function(n){
+            app.console.log('add line ' + n);
+        });
+        */
 
 
     };

@@ -320,6 +320,7 @@ app = {
         state.current('cats').cont.addEventListener('scroll', function(e){
             e.cancelBubble = true;
             var catName = document.activeElement.innerHTML;
+            console.log("cats scroll cat name", catName);
             if(catName) {
                 var cat = _byId(self.prefix + catName);
                 var params = self.state.current('params');
